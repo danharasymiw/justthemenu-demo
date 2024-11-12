@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF=8">
+  <title>Just The Menu</title>
+	<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <meta charset="UTF-8">
+  <title>{% block title %} {% endblock %}</title>
+  <style>
+    nav a {
+      color: #d64161;
+      font-size: 3em;
+      margin-left: 50px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body hx-boost="true">
+  <nav>
+    <a href="/">Just the Menu</a>
+  </nav>
+  <hr>
+  <div class="content">
+    {% block content %} {% endblock %}
+  </div>
+</body>
+
+</html>

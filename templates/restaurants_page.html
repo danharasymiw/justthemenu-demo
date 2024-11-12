@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+  <form>
+    <label for="search">Search Restaurants:</label>
+    <input id="search" name="query" type="search" placeholder="{{ request.args.get('query') or ''}}" 
+            hx-get="/restaurants" {# Send request to /restaurants #}
+            hx-trigger="search, keyup delay:200ms changed" {# Trigger on hit search button, or after user stops typing for 200ms #}
+            hx-target="#restaurants" {# HTML response from server targets the #restaurants <ul> tag below #}
+            hx-swap="innerHTML" {# Specifically replace the html inside of #restaurants <ul> #}
+            hx-push-url="true" {# Add our query parameter to the url so users can copy link from the browser and share it #}
+    />
+    <input value="Search" type="submit"/>
+  </form>
+</div>
+<div>
+  <ul id="restaurants">
+      {% include 'restaurant_list.html' %}
+  </ul>
+</div>
+
+{% endblock %}
